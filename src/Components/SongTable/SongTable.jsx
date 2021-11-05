@@ -12,7 +12,7 @@ function SongTable(props){
                     <th>Album</th>
                     <th>Release Date</th>
                 </tr>
-                {props.songs.map((song) => {
+                {props.musicList.map((song) => {
                     return (
                         <tr>
                             <td>{song.title}</td>

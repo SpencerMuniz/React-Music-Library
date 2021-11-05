@@ -13,11 +13,19 @@ class App extends Component{
         }
     }
 
+    mount() {
+        this.getMusic();
+        this.deleteSong();
+        this.addSong();
+    }
+
     
 
-    async getMusic() {
+    getMusic = async () => {
        let response = await axios.get("http://127.0.0.1:8000/music/");
-       console.log(response.data)
+       this.setState({
+           musicList: response.data
+       });
     }
 
     deleteSong = async (id) => {
@@ -35,6 +43,7 @@ class App extends Component{
             <div>
                 <button onClick={this.getMusic}>Click for songs!</button>
                 <AddNewSong createNewSong={this.addSong} />
+                <SongTable deleteSong={this.deleteSong} musicList={this.state.musicList} /> <br />
             </div>
         )
     }

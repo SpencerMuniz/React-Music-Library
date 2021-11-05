@@ -21,7 +21,7 @@ class AddNewSong extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.state.addSong(this.state)
+        this.props.createNewSong(this.state)
     }
 
     render(){

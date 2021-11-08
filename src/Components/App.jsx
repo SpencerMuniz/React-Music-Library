@@ -43,7 +43,7 @@ class App extends Component{
 
     filterMusic = async (searchWord) => {
         let filteredMusic = this.state.musicList.filter(function(song){
-            if(song.title.includes(searchWord) || song.artist.includes(searchWord) || song.album.includes(searchWord)){
+            if(song.title.includes(searchWord) || song.artist.includes(searchWord) || song.album.includes(searchWord) || song.release_date.includes(searchWord)){
                 return true
             }
             else{

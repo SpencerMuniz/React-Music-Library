@@ -9,7 +9,7 @@ class SearchBar extends Component {
         }
     }
 
-    handleChange = (event) => {
+    onChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -24,7 +24,7 @@ class SearchBar extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <select name="field" onChange={this.handleChange}>
+                    <select name="field" onChange={this.onChange}>
                         <option select value="">Search</option>
                         <option value="title">Title</option>
                         <option value="album">Album</option>
@@ -32,7 +32,7 @@ class SearchBar extends Component {
                         <option value="release_date">Release Date</option>
                     </select>
 
-                    <input onChange={this.handleChange} name="searchWord"></input>
+                    <input onChange={this.onChange} name="searchWord"></input>
                     <button type="submit">Submit</button>
                 </form>
             </div>

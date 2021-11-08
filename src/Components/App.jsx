@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import SongTable from './SongTable/SongTable';
 import AddNewSong from './AddNewSong/AddNewSong';
+import SearchBar from './SearchBar/SearchBar';
 
 
 class App extends Component{
@@ -13,7 +14,7 @@ class App extends Component{
         }
     }
 
-    mount() {
+    set() {
         this.getMusic();
         this.deleteSong();
         this.addSong();
@@ -44,6 +45,7 @@ class App extends Component{
                 <button onClick={this.getMusic}>Click for songs!</button>
                 <AddNewSong createNewSong={this.addSong} />
                 <SongTable deleteSong={this.deleteSong} musicList={this.state.musicList} /> <br />
+                <SearchBar></SearchBar>
             </div>
         )
     }

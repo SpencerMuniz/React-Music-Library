@@ -18,6 +18,7 @@ class App extends Component{
         this.getMusic();
         this.deleteSong();
         this.addSong();
+        this.filterMusic()
     }
 
     
@@ -39,13 +40,26 @@ class App extends Component{
         this.getMusic()
     }
 
+    filterMusic = (field, searchWord) => {
+        console.log(field);
+        console.log(searchWord);
+        let results = this.state.musicList.filter(function(test){
+            if(test[field] === searchWord){
+                return true
+            }
+        })
+        this.setState({
+            musicList: results
+        })
+    }
+
     render(){
         return (
             <div>
                 <button onClick={this.getMusic}>Click for songs!</button>
                 <AddNewSong createNewSong={this.addSong} />
                 <SongTable deleteSong={this.deleteSong} musicList={this.state.musicList} /> <br />
-                <SearchBar></SearchBar>
+                <SearchBar filter={this.filterMusic} musicList={this.state.musicList} filterMusicList={this.filterMusicList} />
             </div>
         )
     }

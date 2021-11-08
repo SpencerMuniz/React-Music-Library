@@ -1,11 +1,30 @@
 import React from 'react';
 import { Component } from 'react';
 
-const SearchBar = (props) => {
+class SearchBar extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            searchWord: ''
+        }
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        this.props.filterSongs(this.state.searchWord)
+    }
+
+    render(){
         return (
             <div>
-                <form onSubmit={props.handleSubmit}>
-                    <select name="field" onChange={props.onChange}>
+                <form onSubmit={this.handleSubmit}>
+                    <select name="field" onChange={this.handleChange}>
                         <option select value="">Search</option>
                         <option value="title">Title</option>
                         <option value="album">Album</option>
@@ -13,10 +32,11 @@ const SearchBar = (props) => {
                         <option value="release_date">Release Date</option>
                     </select>
 
-                    <input onChange={props.onChange} name="searchWord" value={props.searchWord}></input>
+                    <input onChange={this.handleChange} name="searchWord"></input>
                     <button type="submit">Submit</button>
                 </form>
             </div>
         );
+        }
 }
 export default SearchBar;

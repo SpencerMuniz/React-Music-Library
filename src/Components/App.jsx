@@ -11,7 +11,7 @@ class App extends Component{
         super(props)
 
         this.state = {
-            musicList: [], searchWord: "", field: ""
+            musicList: []
         }
     }
 
@@ -41,31 +41,18 @@ class App extends Component{
         this.getMusic()
     }
 
-    filterMusic = (field, searchWord) => {
-        console.log(field);
-        console.log(searchWord);
-        let results = this.state.musicList.filter(function(song){
-            if(song[field] === searchWord){
+    filterMusic = async (searchWord) => {
+        let filteredMusic = this.state.musicList.filter(function(song){
+            if(song.title.includes(searchWord) || song.artist.includes(searchWord) || song.album.includes(searchWord)){
                 return true
             }
-            else if(song[field] !== searchWord){
-            return false
+            else{
+                return false;
             }
         })
         this.setState({
-            musicList: results
+            musicList: filteredMusic
         })
-    }
-
-    onChange = (event) => {
-        this.setState({
-            [event.target.name] : event.target.value
-        })
-    }
-
-    handleSubmit = (string) => {
-        string.preventDefault()
-        this.state.musicList.filterMusic(this.state.field, this.state.searchWord)
     }
 
     render(){
@@ -74,7 +61,7 @@ class App extends Component{
                 <button onClick={this.getMusic}>Click for songs!</button>
                 <AddNewSong createNewSong={this.addSong} />
                 <SongTable deleteSong={this.deleteSong} musicList={this.state.musicList} /> <br />
-                <SearchBar filter={this.filterMusic} musicList={this.state.musicList} searchWord={this.state.searchWord} filterMusicList={this.filterMusicList} onChange={(event) => this.onChange(event)} handleSubmit={() => this.handleSubmit()} />
+                <SearchBar filterSongs={this.filterMusic} />
             </div>
         )
     }

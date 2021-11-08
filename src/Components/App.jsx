@@ -10,7 +10,7 @@ class App extends Component{
         super(props)
 
         this.state = {
-            musicList: [],
+            musicList: [], searchWord: "", field: ""
         }
     }
 
@@ -43,8 +43,8 @@ class App extends Component{
     filterMusic = (field, searchWord) => {
         console.log(field);
         console.log(searchWord);
-        let results = this.state.musicList.filter(function(test){
-            if(test[field] === searchWord){
+        let results = this.state.musicList.filter(function(song){
+            if(song[field] === searchWord){
                 return true
             }
         })
@@ -53,13 +53,24 @@ class App extends Component{
         })
     }
 
+    onChange = (event) => {
+        this.setState({
+            [event.target.name] : event.target.value
+        })
+    }
+
+    handleSubmit = (string) => {
+        string.preventDefault()
+        this.state.musicList.filterMusic(this.state.field, this.state.searchWord)
+    }
+
     render(){
         return (
             <div>
                 <button onClick={this.getMusic}>Click for songs!</button>
                 <AddNewSong createNewSong={this.addSong} />
                 <SongTable deleteSong={this.deleteSong} musicList={this.state.musicList} /> <br />
-                <SearchBar filter={this.filterMusic} musicList={this.state.musicList} filterMusicList={this.filterMusicList} />
+                <SearchBar filter={this.filterMusic} musicList={this.state.musicList} filterMusicList={this.filterMusicList} onChange={this.onChange} handleSubmit={this.handleSubmit}/>
             </div>
         )
     }

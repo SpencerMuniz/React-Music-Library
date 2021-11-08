@@ -1,0 +1,25 @@
+#table-header {
+    background-color: #40866b;
+}
+
+tr {
+    background-color: #05f7e2;
+    margin-bottom: 5px;
+}
+
+#table-default {
+    padding: 2%;
+}
+
+#font-color {
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 2px #05f7e2,
+    2px 2px 2px #05f7e2,
+    2px 2px 2px #05f7e2,
+    2px 2px 2px #05f7e2,
+    2px 2px 2px #05f7e2,
+    2px 2px 2px #05f7e2;
+}

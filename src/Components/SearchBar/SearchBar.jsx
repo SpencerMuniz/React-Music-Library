@@ -13,7 +13,7 @@ const SearchBar = (props) => {
                         <option value="release_date">Release Date</option>
                     </select>
 
-                    <input onChnage={props.onChange} name="searchWord"></input>
+                    <input onChange={props.onChange} name="searchWord" value={props.searchWord}></input>
                     <button type="submit">Submit</button>
                 </form>
             </div>

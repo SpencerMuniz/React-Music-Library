@@ -1,9 +1,9 @@
 #table-header {
-    background-color: #40866b;
+    background-color: #A7C7E7;
 }
 
 tr {
-    background-color: #05f7e2;
+    background-color: #07f379;
     margin-bottom: 5px;
 }
 
@@ -16,10 +16,10 @@ tr {
     font-weight: bold;
     color: white;
     letter-spacing: 1px;
-    text-shadow: 2px 2px 2px #05f7e2,
-    2px 2px 2px #05f7e2,
-    2px 2px 2px #05f7e2,
-    2px 2px 2px #05f7e2,
-    2px 2px 2px #05f7e2,
-    2px 2px 2px #05f7e2;
+    text-shadow: 2px 2px 2px #07f379,
+    2px 2px 2px #07f379,
+    2px 2px 2px #07f379,
+    2px 2px 2px #07f379,
+    2px 2px 2px #07f379,
+    2px 2px 2px #07f379;
 }

@@ -3,6 +3,7 @@ import axios from 'axios';
 import SongTable from './SongTable/SongTable';
 import AddNewSong from './AddNewSong/AddNewSong';
 import SearchBar from './SearchBar/SearchBar';
+import './App.css'
 
 
 class App extends Component{
@@ -47,6 +48,9 @@ class App extends Component{
             if(song[field] === searchWord){
                 return true
             }
+            else if(song[field] !== searchWord){
+            return false
+            }
         })
         this.setState({
             musicList: results
@@ -70,7 +74,7 @@ class App extends Component{
                 <button onClick={this.getMusic}>Click for songs!</button>
                 <AddNewSong createNewSong={this.addSong} />
                 <SongTable deleteSong={this.deleteSong} musicList={this.state.musicList} /> <br />
-                <SearchBar filter={this.filterMusic} musicList={this.state.musicList} filterMusicList={this.filterMusicList} onChange={this.onChange} handleSubmit={this.handleSubmit}/>
+                <SearchBar filter={this.filterMusic} musicList={this.state.musicList} searchWord={this.state.searchWord} filterMusicList={this.filterMusicList} onChange={(event) => this.onChange(event)} handleSubmit={() => this.handleSubmit()} />
             </div>
         )
     }
